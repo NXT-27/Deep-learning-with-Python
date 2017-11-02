@@ -10,17 +10,19 @@ import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 
-# loading the training data
+# Loading the training data
 from tensorflow.examples.tutorials.mnist import input_data
 mnist = input_data.read_data_sets('MNIST_data')
 
 tf.reset_default_graph()
-    
-# defining input and output
+tf.get_default_graph()
+
+# Defining hyperparameters
 batch_size = 64
 learning_rate = 0.0005
 Epochs = 1000
 
+# Defining input and output
 X_in = tf.placeholder(dtype=tf.float32, shape=[None, 28, 28], name='X')
 Y    = tf.placeholder(dtype=tf.float32, shape=[None, 28, 28], name='Y')
 Y_flat = tf.reshape(Y, shape=[-1, 28 * 28])
@@ -55,7 +57,7 @@ def encoder(X_in, keep_prob):
         x = tf.nn.dropout(x, keep_prob)
         x = tf.contrib.layers.flatten(x)
         mn = tf.layers.dense(x, units=n_latent)
-        sd       = 0.5 * tf.layers.dense(x, units=n_latent)            
+        sd = 0.5 * tf.layers.dense(x, units=n_latent)            
         epsilon = tf.random_normal(tf.stack([tf.shape(x)[0], n_latent])) 
         z  = mn + tf.multiply(epsilon, tf.exp(sd))
         
