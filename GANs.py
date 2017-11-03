@@ -87,9 +87,6 @@ def classify(img, correct_class=None, target_class=None):
     plt.show()
 
 
-import PIL
-import numpy as np
-
 # load our example image and make sure it's classified correctly
 import PIL
 import numpy as np
