@@ -31,7 +31,7 @@ def inception(image, reuse):
 
 logits, probs = inception(image, reuse=False)
 
-#  load pre-trained weights
+# load pre-trained weights
 import tempfile
 from urllib.request import urlretrieve
 import tarfile
@@ -102,18 +102,3 @@ img = img.resize((new_w, new_h)).crop((0, 0, 299, 299))
 img = (np.asarray(img) / 255.0).astype(np.float32)
 
 classify(img, correct_class=img_class)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
