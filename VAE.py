@@ -116,7 +116,7 @@ def main():
                 print(i, ls, np.mean(i_ls))
         
         # Generating new data
-        randoms = [np.random.normal(0, 1, n_latent) for _ in range(10)]
+        randoms = [np.random.normal(0, 1, n_latent) for _ in range(100)]
         imgs = sess.run(dec, feed_dict = {sampled: randoms, keep_prob: 1.0})
         imgs = [np.reshape(imgs[i], [28, 28]) for i in range(len(imgs))]
         
